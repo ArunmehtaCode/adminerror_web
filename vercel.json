@@ -1,15 +1,28 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
+  "cleanUrls": true,
+  "trailingSlash": false,
   "routes": [
     {
+      "src": "/js/(.*)",
+      "dest": "/js/$1"
+    },
+    {
+      "src": "/css/(.*)",
+      "dest": "/css/$1"
+    },
+    {
+      "src": "/admin/(.*)",
+      "dest": "/admin/$1"
+    },
+    {
+      "src": "/api/(.*)",
+      "status": 404,
+      "statusText": "API Not Available in Frontend-Only Deployment"
+    },
+    {
       "src": "/(.*)",
-      "dest": "server.js"
+      "dest": "/index.html"
     }
   ]
 }
