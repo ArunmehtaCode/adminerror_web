@@ -23,7 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (data.success) {
                     // Intentionally insecure: storing token in localStorage
                     localStorage.setItem('corp_token', data.token);
-                    window.location.href = data.redirect;
+                    
+                    // Fix: Ensure redirect goes to /admin/ if the API returns /dashboard
+                    let target = data.redirect;
+                    if (target === '/dashboard') {
+                        target = '/admin/dashboard.html';
+                    }
+                    window.location.href = target;
                 } else {
                     errorMsg.textContent = data.message || 'Login failed';
                     errorMsg.style.display = 'block';
