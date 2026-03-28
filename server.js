@@ -119,7 +119,11 @@ app.get('/admin', (req, res) => {
 });
 
 // Start Server
-const PORT = 3002;
-app.listen(PORT, () => {
-  console.log(`CorpAdmin Pro Demo running on http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 3002;
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`CorpAdmin Pro Demo running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
