@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorpAdmin Pro - Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-icon">C</span>
+            <h2>CorpAdmin Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li class="active"><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="users.html">User Management</a></li>
+                <li><a href="settings.html">System Settings</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="avatar">A</div>
+                <span>Administrator</span>
+            </div>
+            <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+        </div>
+    </div>
+    
+    <main class="main-content">
+        <header class="topbar">
+            <h1>Dashboard Overview</h1>
+            <div class="topbar-actions">
+                <span class="notification-bell">🔔</span>
+                <input type="text" placeholder="Search..." class="search-bar">
+            </div>
+        </header>
+        
+        <div class="dashboard-content">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <h3>Total Users</h3>
+                    <div class="stat-value">1,248</div>
+                    <div class="stat-trend positive">↑ 12% this week</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Revenue</h3>
+                    <div class="stat-value">$45,200</div>
+                    <div class="stat-trend positive">↑ 8% this week</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Sessions</h3>
+                    <div class="stat-value">342</div>
+                    <div class="stat-trend negative">↓ 3% this week</div>
+                </div>
+                <div class="stat-card">
+                    <h3>Server Load</h3>
+                    <div class="stat-value text-warning">86%</div>
+                    <div class="stat-trend text-warning">High Activity</div>
+                </div>
+            </div>
+
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Revenue Overview</h3>
+                    <canvas id="revenueChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>User Growth</h3>
+                    <canvas id="userGrowthChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

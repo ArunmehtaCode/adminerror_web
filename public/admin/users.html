@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CorpAdmin Pro - Users</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="admin-body">
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <span class="logo-icon">C</span>
+            <h2>CorpAdmin Pro</h2>
+        </div>
+        <nav class="sidebar-nav">
+            <ul>
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li class="active"><a href="users.html">User Management</a></li>
+                <li><a href="settings.html">System Settings</a></li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <div class="avatar">A</div>
+                <span>Administrator</span>
+            </div>
+            <a href="#" id="logoutBtn" class="logout-link">Logout</a>
+        </div>
+    </div>
+    
+    <main class="main-content">
+        <header class="topbar">
+            <h1>User Management</h1>
+            <div class="topbar-actions">
+                <button class="btn-primary">+ Add New User</button>
+            </div>
+        </header>
+        
+        <div class="users-content">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Active Directory Users</h3>
+                    <div class="table-actions">
+                        <input type="text" placeholder="Search users..." class="search-bar">
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Role</th>
+                                <th>Last Login</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="usersTableBody">
+                            <!-- Populated via JS -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Privilege Escalation Exploit Demo Modal -->
+        <div id="editRoleModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit User Role</h2>
+                <p>Warning: Changing roles can affect system access.</p>
+                <form id="editRoleForm">
+                    <input type="hidden" id="editUserId">
+                    <div class="form-group">
+                        <label for="newRole">Select Role (Vulnerable API)</label>
+                        <select id="newRole" class="form-control">
+                            <option value="user">User</option>
+                            <option value="manager">Manager</option>
+                            <option value="admin">Admin</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary">Save Changes</button>
+                    <div id="roleUpdateMsg"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
