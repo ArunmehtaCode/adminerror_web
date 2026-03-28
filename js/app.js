@@ -24,12 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Intentionally insecure: storing token in localStorage
                     localStorage.setItem('corp_token', data.token);
                     
-                    // Fix: Ensure redirect goes to /admin/ if the API returns /dashboard
-                    let target = data.redirect;
-                    if (target === '/dashboard') {
-                        target = '/admin/dashboard.html';
-                    }
-                    window.location.href = target;
+                    // Force redirect to the correct admin dashboard path for Vercel
+                    window.location.href = '/admin/dashboard';
                 } else {
                     errorMsg.textContent = data.message || 'Login failed';
                     errorMsg.style.display = 'block';
