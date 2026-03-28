@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
+    const BASE_URL = 'https://adminerror-web.onrender.com';
     const token = localStorage.getItem('corp_token');
     const path = window.location.pathname;
 
@@ -12,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const errorMsg = document.getElementById('loginError');
 
             try {
-                const res = await fetch('/api/login', {
+                const res = await fetch(`${BASE_URL}/api/login`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
@@ -92,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (usersTableBody) {
         const fetchUsers = async () => {
             try {
-                const res = await fetch('/api/users', {
+                const res = await fetch(`${BASE_URL}/api/users`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const users = await res.json();
@@ -139,7 +140,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             try {
                 // Anyone can call this! No backend authz checks.
-                const res = await fetch(`/api/users/${id}`, {
+                const res = await fetch(`${BASE_URL}/api/users/${id}`, {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
@@ -172,7 +173,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (sysInfoDiv) {
         const fetchSysInfo = async () => {
             try {
-                const res = await fetch('/api/system-info', {
+                const res = await fetch(`${BASE_URL}/api/system-info`, {
                     headers: { 'Authorization': `Bearer ${token}` }
                 });
                 const data = await res.json();
@@ -204,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
         triggerErrorBtn.addEventListener('click', async () => {
             errorDisplay.textContent = "Fetching debug logs...\n";
             try {
-                const res = await fetch('/api/debug');
+                const res = await fetch(`${BASE_URL}/api/debug`);
                 const data = await res.json();
                 // Dump raw error stack and environment variables to the UI
                 errorDisplay.textContent += `== EXCEPTION CAUGHT ==\n${data.error}\n\n`;
